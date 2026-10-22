@@ -1,0 +1,54 @@
+<div class="cabecalho">
+  <div>
+    <h1>{{ id ? 'Editar anotação' : 'Nova anotação' }}</h1>
+    <p>{{ id ? 'Ajuste o que precisar.' : 'Como foi o seu dia?' }}</p>
+  </div>
+</div>
+
+@if (carregando) {
+  <p class="carregando">Carregando...</p>
+} @else {
+  <form class="cartao formulario" #form="ngForm" (ngSubmit)="salvar(form)" novalidate>
+    <div class="campo campo-data">
+      <label for="data">Dia</label>
+      <input id="data" type="date" name="data" [(ngModel)]="data" #campoData="ngModel" [max]="hoje" required>
+      @if (campoData.invalid && campoData.touched) {
+        <span class="erro-campo">Escolha a data.</span>
+      }
+    </div>
+
+    <div class="campo">
+      <label for="titulo">Título</label>
+      <input id="titulo" name="titulo" [(ngModel)]="titulo" #campoTitulo="ngModel" required maxlength="150"
+             placeholder="Dê um título para o seu dia">
+      @if (campoTitulo.invalid && campoTitulo.touched) {
+        <span class="erro-campo">Informe o título.</span>
+      }
+    </div>
+
+    <div class="campo">
+      <label for="descricao">O que aconteceu?</label>
+      <textarea id="descricao" name="descricao" [(ngModel)]="descricao" #campoDescricao="ngModel" required
+                placeholder="Escreva livremente..."></textarea>
+      @if (campoDescricao.invalid && campoDescricao.touched) {
+        <span class="erro-campo">Escreva algo sobre o seu dia.</span>
+      }
+      <span class="contador">{{ descricao.length }} caracteres</span>
+    </div>
+
+    <div class="campo">
+      <span class="rotulo-campo">Avaliação do dia</span>
+      <app-estrelas [(valor)]="avaliacao" [editavel]="true" />
+      @if (avaliacao === 0 && form.submitted) {
+        <span class="erro-campo">Escolha de 1 a 5 estrelas.</span>
+      }
+    </div>
+
+    <div class="acoes">
+      <a [routerLink]="id ? ['/anotacoes', id] : ['/inicio']" class="btn btn-fantasma">Cancelar</a>
+      <button type="submit" class="btn btn-primario" [disabled]="enviando">
+        {{ enviando ? 'Salvando...' : (id ? 'Salvar alterações' : 'Salvar anotação') }}
+      </button>
+    </div>
+  </form>
+}

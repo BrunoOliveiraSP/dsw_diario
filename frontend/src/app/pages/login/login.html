@@ -1,0 +1,33 @@
+<section class="auth">
+  <div class="cartao">
+    <div class="auth-logo">✎</div>
+    <h1>Entrar</h1>
+    <p class="subtitulo">Que bom ver você de novo.</p>
+
+    <form #form="ngForm" (ngSubmit)="entrar(form)" novalidate>
+      <div class="campo">
+        <label for="email">E-mail</label>
+        <input id="email" type="email" name="email" [(ngModel)]="email" #campoEmail="ngModel" required email
+               placeholder="voce@email.com">
+        @if (campoEmail.invalid && campoEmail.touched) {
+          <span class="erro-campo">Informe um e-mail válido.</span>
+        }
+      </div>
+
+      <div class="campo">
+        <label for="senha">Senha</label>
+        <input id="senha" type="password" name="senha" [(ngModel)]="senha" #campoSenha="ngModel" required
+               placeholder="Sua senha">
+        @if (campoSenha.invalid && campoSenha.touched) {
+          <span class="erro-campo">Informe a senha.</span>
+        }
+      </div>
+
+      <button type="submit" class="btn btn-primario btn-bloco" [disabled]="enviando">
+        {{ enviando ? 'Entrando...' : 'Entrar' }}
+      </button>
+    </form>
+
+    <p class="rodape">Ainda não tem conta? <a routerLink="/cadastro">Criar conta</a></p>
+  </div>
+</section>

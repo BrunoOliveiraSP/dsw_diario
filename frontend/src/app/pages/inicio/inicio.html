@@ -1,0 +1,57 @@
+<div class="cabecalho">
+  <div>
+    <h1>{{ saudacao() }}, {{ nome }}!</h1>
+    <p>{{ hoje | date: "EEEE, d 'de' MMMM" }}</p>
+  </div>
+  <a routerLink="/anotacoes/nova" class="btn btn-primario">+ Nova anotação</a>
+</div>
+
+@if (!carregando) {
+  <div class="resumo">
+    <div class="cartao destaque" [class.feito]="escreveuHoje">
+      <span class="rotulo">Hoje</span>
+      @if (escreveuHoje) {
+        <strong>Você já escreveu hoje ✓</strong>
+      } @else {
+        <strong>Ainda não escreveu hoje</strong>
+        <a routerLink="/anotacoes/nova">Escrever agora →</a>
+      }
+    </div>
+
+    <div class="cartao">
+      <span class="rotulo">Média recente</span>
+      @if (ultimas.length > 0) {
+        <strong>{{ mediaAvaliacao | number: '1.1-1' }} <small>/ 5</small></strong>
+      } @else {
+        <strong>—</strong>
+      }
+    </div>
+  </div>
+}
+
+<div class="secao-titulo">
+  <h2>Últimas anotações</h2>
+  <a routerLink="/anotacoes">Ver todas</a>
+</div>
+
+@if (carregando) {
+  <p class="carregando">Carregando...</p>
+} @else if (ultimas.length === 0) {
+  <div class="vazio">
+    <p>Seu diário está vazio. Que tal escrever a primeira anotação?</p>
+    <a routerLink="/anotacoes/nova" class="btn btn-primario">Escrever agora</a>
+  </div>
+} @else {
+  <div class="lista">
+    @for (anotacao of ultimas; track anotacao.id) {
+      <a class="item-anotacao" [routerLink]="['/anotacoes', anotacao.id]">
+        <div class="item-topo">
+          <h3>{{ anotacao.titulo }}</h3>
+          <app-estrelas [valor]="anotacao.avaliacao" />
+        </div>
+        <p>{{ anotacao.descricao }}</p>
+        <div class="item-data">{{ anotacao.inclusao | date: "dd/MM/yyyy 'às' HH:mm" }}</div>
+      </a>
+    }
+  </div>
+}

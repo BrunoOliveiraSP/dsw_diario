@@ -1,0 +1,71 @@
+.topo {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--borda);
+}
+
+.topo-conteudo {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.marca {
+  font-family: var(--fonte-titulo);
+  font-size: 1.3rem;
+  color: var(--texto);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.marca-icone {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: var(--primaria);
+  color: #fff;
+  font-size: 1rem;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.menu a:not(.btn) {
+  color: var(--texto-suave);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+.menu a:not(.btn):hover {
+  background: var(--fundo-suave);
+  color: var(--texto);
+}
+
+.menu a.ativo {
+  color: var(--primaria);
+  background: var(--primaria-clara);
+}
+
+.conteudo {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 32px 20px 64px;
+}

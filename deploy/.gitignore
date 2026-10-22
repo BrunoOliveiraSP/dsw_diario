@@ -1,0 +1,14 @@
+# Variáveis de ambiente (versionar apenas o .env.example)
+.env
+.env.*
+!.env.example
+
+# Override local do docker compose
+docker-compose.override.yml
+
+# Logs
+*.log
+
+# Sistema operacional
+.DS_Store
+Thumbs.db

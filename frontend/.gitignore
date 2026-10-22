@@ -1,0 +1,49 @@
+# Build
+/dist
+/tmp
+/out-tsc
+/bazel-out
+
+# Dependências
+/node_modules
+
+# Logs
+npm-debug.log*
+yarn-error.log
+*.log
+
+# Variáveis de ambiente (o env.js é gerado a partir do .env)
+.env
+.env.*
+!.env.example
+public/env.js
+
+# Cache do Angular e testes
+/.angular/cache
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
+__screenshots__/
+
+# IDEs e editores
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/mcp.json
+.history/*
+
+# Sistema operacional
+.DS_Store
+Thumbs.db

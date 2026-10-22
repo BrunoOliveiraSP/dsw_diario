@@ -1,0 +1,17 @@
+.estrelas { display: inline-flex; gap: 2px; color: var(--borda); white-space: nowrap; }
+
+.estrelas .cheia { color: var(--estrela); }
+
+.estrelas button {
+  background: none;
+  border: none;
+  padding: 0 2px;
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--borda);
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.estrelas button.cheia { color: var(--estrela); }
+.estrelas button:hover { transform: scale(1.15); }

@@ -1,0 +1,17 @@
+# Regras gerais do repositório. Cada pasta (backend, frontend, deploy) tem o seu .gitignore.
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# IDEs
+.idea/
+*.iml
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# Variáveis de ambiente
+.env
+.env.*
+!.env.example

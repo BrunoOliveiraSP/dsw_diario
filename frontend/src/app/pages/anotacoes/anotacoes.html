@@ -1,0 +1,75 @@
+<div class="cabecalho">
+  <div>
+    <h1>Anotações</h1>
+    <p>Procure suas anotações por período, texto ou avaliação.</p>
+  </div>
+  <a routerLink="/anotacoes/nova" class="btn btn-primario">+ Nova anotação</a>
+</div>
+
+<form class="cartao filtros" (ngSubmit)="pesquisar()">
+  <div class="filtros-grade">
+    <div class="campo">
+      <label for="inicio">De</label>
+      <input id="inicio" type="date" name="inicio" [(ngModel)]="inicio" required>
+    </div>
+
+    <div class="campo">
+      <label for="fim">Até</label>
+      <input id="fim" type="date" name="fim" [(ngModel)]="fim" required>
+    </div>
+
+    <div class="campo">
+      <label for="avaliacao">Avaliação mínima</label>
+      <select id="avaliacao" name="avaliacao" [(ngModel)]="avaliacaoMinima">
+        <option [ngValue]="0">Todas</option>
+        <option [ngValue]="2">★★ ou mais</option>
+        <option [ngValue]="3">★★★ ou mais</option>
+        <option [ngValue]="4">★★★★ ou mais</option>
+        <option [ngValue]="5">★★★★★</option>
+      </select>
+    </div>
+
+    <div class="campo">
+      <label for="busca">Buscar</label>
+      <input id="busca" name="busca" [(ngModel)]="busca" placeholder="Título ou texto">
+    </div>
+  </div>
+
+  <div class="filtros-acoes">
+    <div class="atalhos">
+      <button type="button" class="btn btn-secundario btn-pequeno" (click)="periodoRapido(7)">7 dias</button>
+      <button type="button" class="btn btn-secundario btn-pequeno" (click)="periodoRapido(30)">30 dias</button>
+      <button type="button" class="btn btn-secundario btn-pequeno" (click)="periodoRapido(365)">1 ano</button>
+    </div>
+    <div class="atalhos">
+      <button type="button" class="btn btn-fantasma btn-pequeno" (click)="limparFiltros()">Limpar</button>
+      <button type="submit" class="btn btn-primario btn-pequeno">Filtrar</button>
+    </div>
+  </div>
+</form>
+
+@if (carregando) {
+  <p class="carregando">Carregando...</p>
+} @else {
+  <p class="contagem">{{ filtradas().length }} anotação(ões) encontrada(s)</p>
+
+  @if (filtradas().length === 0) {
+    <div class="vazio">
+      <p>Nenhuma anotação encontrada com esses filtros.</p>
+      <button class="btn btn-secundario" (click)="limparFiltros()">Limpar filtros</button>
+    </div>
+  } @else {
+    <div class="lista">
+      @for (anotacao of filtradas(); track anotacao.id) {
+        <a class="item-anotacao" [routerLink]="['/anotacoes', anotacao.id]">
+          <div class="item-topo">
+            <h3>{{ anotacao.titulo }}</h3>
+            <app-estrelas [valor]="anotacao.avaliacao" />
+          </div>
+          <p>{{ anotacao.descricao }}</p>
+          <div class="item-data">{{ anotacao.inclusao | date: "EEEE, dd/MM/yyyy 'às' HH:mm" }}</div>
+        </a>
+      }
+    </div>
+  }
+}

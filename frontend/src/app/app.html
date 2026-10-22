@@ -1,0 +1,20 @@
+@if (auth.estaLogado()) {
+  <header class="topo">
+    <div class="topo-conteudo">
+      <a routerLink="/inicio" class="marca">
+        <span class="marca-icone">✎</span> Meu Diário
+      </a>
+
+      <nav class="menu">
+        <a routerLink="/inicio" routerLinkActive="ativo">Início</a>
+        <a routerLink="/anotacoes" routerLinkActive="ativo" [routerLinkActiveOptions]="{ exact: true }">Anotações</a>
+        <a routerLink="/anotacoes/nova" class="btn btn-primario btn-pequeno">+ Nova</a>
+        <button class="btn btn-fantasma btn-pequeno" (click)="sair()">Sair</button>
+      </nav>
+    </div>
+  </header>
+}
+
+<main class="conteudo">
+  <router-outlet />
+</main>

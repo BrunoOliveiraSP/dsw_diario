@@ -1,0 +1,18 @@
+.filtros { margin-bottom: 20px; padding: 20px 24px; }
+
+.filtros-grade {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0 16px;
+}
+
+.filtros-acoes {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.atalhos { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.contagem { color: var(--texto-suave); font-size: 0.9rem; margin: 0 0 12px; }

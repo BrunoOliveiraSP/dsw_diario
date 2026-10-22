@@ -1,0 +1,35 @@
+.cabecalho p::first-letter { text-transform: uppercase; }
+
+.resumo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-bottom: 36px;
+}
+
+.resumo .cartao { display: flex; flex-direction: column; gap: 4px; padding: 20px 24px; }
+
+.rotulo {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--texto-suave);
+}
+
+.resumo strong { font-size: 1.3rem; }
+.resumo small { font-size: 0.9rem; color: var(--texto-suave); font-weight: 500; }
+.resumo a { font-weight: 600; text-decoration: none; }
+
+.destaque { background: linear-gradient(135deg, var(--primaria-clara), #fff); }
+.destaque.feito { background: linear-gradient(135deg, #e6f6ee, #fff); }
+.destaque.feito strong { color: var(--sucesso); }
+
+.secao-titulo {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 14px;
+}
+
+.secao-titulo a { font-weight: 600; text-decoration: none; }

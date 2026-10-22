@@ -1,0 +1,51 @@
+<section class="auth">
+  <div class="cartao">
+    <div class="auth-logo">✎</div>
+    <h1>Criar conta</h1>
+    <p class="subtitulo">Comece hoje a registrar seus dias.</p>
+
+    <form #form="ngForm" (ngSubmit)="cadastrar(form)" novalidate>
+      <div class="campo">
+        <label for="nome">Nome</label>
+        <input id="nome" name="nome" [(ngModel)]="nome" #campoNome="ngModel" required maxlength="100"
+               placeholder="Seu nome">
+        @if (campoNome.invalid && campoNome.touched) {
+          <span class="erro-campo">Informe seu nome.</span>
+        }
+      </div>
+
+      <div class="campo">
+        <label for="email">E-mail</label>
+        <input id="email" type="email" name="email" [(ngModel)]="email" #campoEmail="ngModel" required email
+               placeholder="voce@email.com">
+        @if (campoEmail.invalid && campoEmail.touched) {
+          <span class="erro-campo">Informe um e-mail válido.</span>
+        }
+      </div>
+
+      <div class="campo">
+        <label for="senha">Senha</label>
+        <input id="senha" type="password" name="senha" [(ngModel)]="senha" #campoSenha="ngModel" required
+               minlength="6" placeholder="Mínimo de 6 caracteres">
+        @if (campoSenha.invalid && campoSenha.touched) {
+          <span class="erro-campo">A senha deve ter pelo menos 6 caracteres.</span>
+        }
+      </div>
+
+      <div class="campo">
+        <label for="confirmarSenha">Confirmar senha</label>
+        <input id="confirmarSenha" type="password" name="confirmarSenha" [(ngModel)]="confirmarSenha"
+               #campoConfirmar="ngModel" required placeholder="Repita a senha">
+        @if (campoConfirmar.touched && confirmarSenha !== senha) {
+          <span class="erro-campo">As senhas não conferem.</span>
+        }
+      </div>
+
+      <button type="submit" class="btn btn-primario btn-bloco" [disabled]="enviando">
+        {{ enviando ? 'Criando...' : 'Criar conta' }}
+      </button>
+    </form>
+
+    <p class="rodape">Já tem conta? <a routerLink="/login">Entrar</a></p>
+  </div>
+</section>

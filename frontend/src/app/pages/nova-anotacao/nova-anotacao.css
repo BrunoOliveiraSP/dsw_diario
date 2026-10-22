@@ -1,0 +1,21 @@
+.formulario { padding: 32px; }
+
+.rotulo-campo { font-weight: 500; font-size: 0.9rem; }
+
+.campo-data input { max-width: 220px; }
+
+.contador { align-self: flex-end; font-size: 0.8rem; color: var(--texto-suave); }
+
+.acoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  border-top: 1px solid var(--borda);
+  margin-top: 8px;
+  padding-top: 20px;
+}
+
+@media (max-width: 600px) {
+  .formulario { padding: 20px; }
+  .campo-data input { max-width: none; }
+}

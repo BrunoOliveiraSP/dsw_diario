@@ -1,0 +1,22 @@
+<div class="barra">
+  <a routerLink="/anotacoes" class="voltar">← Voltar para anotações</a>
+  @if (anotacao) {
+    <a [routerLink]="['/anotacoes', anotacao.id, 'editar']" class="btn btn-secundario btn-pequeno">✎ Editar</a>
+  }
+</div>
+
+@if (anotacao) {
+  <article class="cartao detalhe">
+    <p class="data">{{ anotacao.inclusao | date: "EEEE, d 'de' MMMM 'de' yyyy 'às' HH:mm" }}</p>
+    <h1>{{ anotacao.titulo }}</h1>
+
+    <div class="avaliacao">
+      <app-estrelas [valor]="anotacao.avaliacao" />
+      <span>{{ rotuloAvaliacao(anotacao.avaliacao) }}</span>
+    </div>
+
+    <div class="texto">{{ anotacao.descricao }}</div>
+  </article>
+} @else {
+  <p class="carregando">Carregando...</p>
+}

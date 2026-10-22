@@ -1,0 +1,10 @@
+<span class="estrelas" [class.editavel]="editavel">
+  @for (nota of estrelas; track nota) {
+    @if (editavel) {
+      <button type="button" [class.cheia]="nota <= valor" (click)="escolher(nota)"
+              [attr.aria-label]="nota + ' estrela(s)'">★</button>
+    } @else {
+      <span [class.cheia]="nota <= valor">★</span>
+    }
+  }
+</span>

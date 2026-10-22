@@ -1,0 +1,233 @@
+/* ===== Variáveis ===== */
+:root {
+  --primaria: #6d4aff;
+  --primaria-escura: #5634e6;
+  --primaria-clara: #efeaff;
+  --texto: #1d1b26;
+  --texto-suave: #6b6880;
+  --fundo: #f7f6fb;
+  --fundo-suave: #f0eef7;
+  --cartao: #ffffff;
+  --borda: #e6e3ef;
+  --erro: #e5484d;
+  --sucesso: #30a46c;
+  --estrela: #f5a524;
+  --raio: 14px;
+  --sombra: 0 1px 2px rgba(29, 27, 38, 0.04), 0 8px 24px rgba(29, 27, 38, 0.06);
+  --fonte: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --fonte-titulo: 'Fraunces', Georgia, serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--fonte);
+  color: var(--texto);
+  background: var(--fundo);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--fonte-titulo);
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.2;
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.4rem; }
+
+a { color: var(--primaria); }
+
+.suave { color: var(--texto-suave); }
+
+/* ===== Cartões ===== */
+.cartao {
+  background: var(--cartao);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+  padding: 24px;
+}
+
+/* ===== Botões ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 11px 18px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s, transform 0.05s, box-shadow 0.15s;
+}
+
+.btn:active { transform: translateY(1px); }
+.btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.btn-primario {
+  background: var(--primaria);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(109, 74, 255, 0.3);
+}
+.btn-primario:hover:not(:disabled) { background: var(--primaria-escura); }
+
+.btn-secundario {
+  background: var(--cartao);
+  color: var(--texto);
+  border-color: var(--borda);
+}
+.btn-secundario:hover { background: var(--fundo-suave); }
+
+.btn-fantasma {
+  background: transparent;
+  color: var(--texto-suave);
+}
+.btn-fantasma:hover { background: var(--fundo-suave); color: var(--texto); }
+
+.btn-pequeno { padding: 7px 12px; font-size: 0.875rem; }
+.btn-bloco { width: 100%; }
+
+/* ===== Formulários ===== */
+.campo { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
+
+.campo label { font-weight: 500; font-size: 0.9rem; }
+
+.campo input,
+.campo textarea,
+.campo select {
+  font: inherit;
+  color: var(--texto);
+  padding: 11px 14px;
+  border: 1px solid var(--borda);
+  border-radius: 10px;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.campo textarea { resize: vertical; min-height: 160px; }
+
+.campo input:focus,
+.campo textarea:focus,
+.campo select:focus {
+  border-color: var(--primaria);
+  box-shadow: 0 0 0 4px var(--primaria-clara);
+}
+
+/* campos inválidos depois que o usuário mexeu (classes do FormsModule) */
+.campo .ng-invalid.ng-touched { border-color: var(--erro); }
+
+.erro-campo { color: var(--erro); font-size: 0.82rem; }
+
+/* ===== Páginas de autenticação ===== */
+.auth {
+  min-height: calc(100vh - 96px);
+  display: grid;
+  place-items: center;
+}
+
+.auth .cartao { width: 100%; max-width: 420px; padding: 36px; }
+.auth h1 { margin-bottom: 4px; }
+.auth .subtitulo { color: var(--texto-suave); margin: 0 0 28px; }
+.auth .rodape { text-align: center; margin-top: 20px; color: var(--texto-suave); font-size: 0.92rem; }
+
+.auth-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: var(--primaria);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+}
+
+/* ===== Cabeçalho de página ===== */
+.cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.cabecalho p { margin: 6px 0 0; color: var(--texto-suave); }
+
+/* ===== Lista de anotações ===== */
+.lista { display: grid; gap: 12px; }
+
+.item-anotacao {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: var(--cartao);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  padding: 18px 20px;
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+}
+
+.item-anotacao:hover {
+  border-color: var(--primaria);
+  box-shadow: var(--sombra);
+  transform: translateY(-1px);
+}
+
+.item-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.item-anotacao h3 { font-family: var(--fonte); font-size: 1.05rem; font-weight: 600; }
+
+.item-anotacao p {
+  margin: 0;
+  color: var(--texto-suave);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.item-data { font-size: 0.82rem; color: var(--texto-suave); margin-top: 8px; }
+
+/* ===== Estados ===== */
+.vazio {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--texto-suave);
+  border: 2px dashed var(--borda);
+  border-radius: var(--raio);
+}
+
+.vazio p { margin: 0 0 16px; }
+
+.carregando { text-align: center; color: var(--texto-suave); padding: 32px; }
+
+/* ===== Toast (ngx-toastr) ===== */
+.toast-container .ngx-toastr {
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(29, 27, 38, 0.18);
+  font-family: var(--fonte);
+  white-space: pre-line;
+}
+.toast-container .ngx-toastr:hover { box-shadow: 0 10px 30px rgba(29, 27, 38, 0.25); }
+.toast-success { background-color: var(--sucesso); }
+.toast-error { background-color: var(--erro); }
+
+@media (max-width: 600px) {
+  h1 { font-size: 1.6rem; }
+  .cartao { padding: 20px; }
+}
